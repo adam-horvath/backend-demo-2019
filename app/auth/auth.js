@@ -5,15 +5,15 @@ let email = require('./email');
 
 let register = (req, res) => {
   if (!req.body.email || !req.body.password) {
-    console.log(2000, 'Please pass correct parameters.');
+    console.log('Please pass correct parameters.');
     return res.status(400).send({msg: 'Please pass correct parameters.'});
   }
   // email address validation
   if (!validateEmail(req.body.email)) {
-    console.log(2001, 'Invalid email address: ' + req.body.email);
+    console.log('Invalid email address: ' + req.body.email);
     return res.status(400).send({success: false, msg: 'Invalid email address.'});
   }
-  let newUser = new User({
+  const newUser = new User({
     email: req.body.email,
     password: req.body.password,
     account_type: 'REGISTERED',
@@ -29,7 +29,7 @@ let register = (req, res) => {
         email: req.body.email
       }, async (err2, existingUser) => {
         if (err2) {
-          console.log(20077, err2.message);
+          console.log(err2.message);
           return res.status(500).send({success: false, msg: err2.message});
         }
         if (existingUser.account_type.toString() === 'REJECTED') {
@@ -43,21 +43,21 @@ let register = (req, res) => {
           existingUser.account_type = 'REGISTERED';
           existingUser.save((err3) => {
             if (err3) {
-              console.log(20071, err3.message);
+              console.log(err3.message);
               return res.status(500).send({success: false, msg: err3.message});
             }
-            console.log(2009, newUser.email + ' created successfully');
+            console.log(newUser.email + ' created successfully');
             return res.status(200).send({success: true, msg: 'User created successfully.'});
           });
         }
         else {
-          console.log(20072, 'ExistingUser');
+          console.log('ExistingUser');
           return res.status(500).send({success: false, msg: 'Ez a felhasználó már létezik.'});
         }
       });
     }
     else {
-      console.log(20099, newUser.email + ' created successfully');
+      console.log(newUser.email + ' created successfully');
       try {
         await email.sendMail(req, res);
       } catch (err) {
@@ -70,15 +70,19 @@ let register = (req, res) => {
 };
 
 let login = (req, res) => {
+  if (!req.body.email || !req.body.password) {
+    console.log('Please pass correct parameters.');
+    return res.status(400).send({msg: 'Please pass correct parameters.'});
+  }
   User.findOne({
     email: req.body.email
   }, (err, user) => {
     if (err) {
-      console.log(2010, err.message);
+      console.log(err.message);
       return res.status(404).send({success: false, msg: 'User not found.'});
     }
     if (!user) {
-      console.log(2011, 'Authentication failed. User not found.');
+      console.log('Authentication failed. User not found.');
       return res.status(404).send({success: false, msg: 'Authentication failed. User not found.'});
     } else {
       // check if password matches
@@ -86,22 +90,22 @@ let login = (req, res) => {
         if (isMatch && !err) {
           // if the user has not confirmed his/her email address
           if (user.account_type.toString() === 'REGISTERED') {
-            console.log(2012, 'Please confirm your email address.');
+            console.log('Please confirm your email address.');
             return res.status(403).send({success: false, msg: 'Please confirm your email address.'});
           }
           // if the admin has rejected the user
           if (user.account_type.toString() === 'REJECTED') {
-            console.log(20120, 'The admin has rejected your registration.');
+            console.log('The admin has rejected your registration.');
             return res.status(403).send({success: false, msg: 'The admin has rejected your registration.'});
           }
           // if user is found and password is right create a token
           let token = jwt.encode(user, config.secret);
           // return the information including token as JSON
-          console.log(2013, 'JWT provided.');
-          return res.status(200).send({token: 'JWT ' + token, id: user.id});
+          console.log('JWT provided.');
+          return res.status(200).send({token: 'Bearer ' + token, id: user.id});
         } else {
-          console.log(2014, 'Wrong password');
-          return res.status(200).send({msg: 'Authentication failed. Wrong password.'});
+          console.log('Wrong password');
+          return res.status(401).send({msg: 'Authentication failed. Wrong password.'});
         }
       });
     }

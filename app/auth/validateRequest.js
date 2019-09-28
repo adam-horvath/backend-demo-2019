@@ -12,15 +12,14 @@ module.exports = (req, res, next) => {
         email: decoded.email
       }, (err, user) => {
         if (err || !user) {
-          console.log(4000, 'User not found');
+          console.log('User not found');
           return res.status(404).send({success: false, msg: 'User not found.'});
         }
         next();
       });
     } catch (err) {
-      console.log(4001, 'Unauthorized');
-      res.status(403);
-      return res.json({'status': 403, 'message': 'Unauthorized', 'error': err});
+      console.log('Unauthorized');
+      return res.status(403).send({'status': 403, 'message': 'Unauthorized', 'error': err});
     }
   }
   else {
