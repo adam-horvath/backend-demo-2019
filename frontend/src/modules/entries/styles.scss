@@ -1,0 +1,14 @@
+@import "../../styles/colors";
+
+.blog-entries-container {
+  .entry {
+    padding: 20px 20px 0 20px;
+    font-size: 20px;
+    color: $cyan;
+    cursor: pointer;
+  }
+}
+
+.MuiPaper-root {
+  min-width: 300px;
+}

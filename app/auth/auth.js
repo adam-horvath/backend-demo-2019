@@ -102,7 +102,7 @@ let login = (req, res) => {
           let token = jwt.encode(user, config.secret);
           // return the information including token as JSON
           console.log('JWT provided.');
-          return res.status(200).send({token: 'Bearer ' + token, id: user.id});
+          return res.status(200).send({token, id: user.id});
         } else {
           console.log('Wrong password');
           return res.status(401).send({msg: 'Authentication failed. Wrong password.'});

@@ -12,6 +12,7 @@
   align-items: center;
   color: white;
   padding: 10px;
+  position: relative;
   .menu-element {
     color: $greyE5;
     text-decoration: none;
@@ -23,5 +24,11 @@
     &:hover {
       background-color: $grey4C;
     }
+  }
+  .logout-container {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
   }
 }

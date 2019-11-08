@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { connect } from "react-redux";
 
 import "./styles.scss";
+import { bindActionCreators } from "redux";
+import { login } from "../../actions/auth";
+import {withRouter} from "react-router-dom";
 
 class Login extends Component {
   state = {
@@ -14,8 +18,18 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  login = () => {
-    console.log("hello");
+  login = async () => {
+    const { login } = this.props;
+    const { email, password } = this.state;
+    try {
+      await login({
+        email,
+        password
+      });
+      this.props.history.push('/home');
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   render() {
@@ -62,4 +76,12 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ login }, dispatch);
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
