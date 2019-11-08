@@ -61,3 +61,9 @@ typings/
 .next
 
 .idea
+data
+
+*.css
+*.css.map
+
+data/db/mongod.lock

@@ -1,0 +1,11 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  .content {
+    margin-top: 200px;
+    width: 300px;
+    .email-container, .password-container, .button-container {
+      margin-top: 20px;
+    }
+  }
+}
