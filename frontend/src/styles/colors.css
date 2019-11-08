@@ -1,0 +1,42 @@
+/*
+Error: Invalid CSS after "$black ": expected ":", was "= #000;"
+        on line 2 of colors.scss
+
+1: $red: #BB0A30;
+2: $black = #000;
+3: $grey1A = #1a1a1a;
+4: $grey33 = #333333;
+5: $grey4C = #4c4c4c;
+6: $grey66 = #666666;
+7: $grey80 = #808080;
+
+Backtrace:
+colors.scss:2
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:1308:in `expected'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:1238:in `expected'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:1233:in `tok!'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:651:in `variable'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:707:in `block_child'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:700:in `block_contents'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:137:in `stylesheet'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:41:in `parse'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/engine.rb:414:in `_to_tree'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/engine.rb:307:in `render_with_sourcemap'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:209:in `each'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin.rb:82:in `update_stylesheets'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/exec/sass_scss.rb:338:in `watch_or_update'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/exec/sass_scss.rb:51:in `process_result'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/exec/base.rb:50:in `parse'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/exec/base.rb:18:in `parse!'
+C:/Program Files/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/bin/scss:13:in `<top (required)>'
+C:/Program Files/Ruby26-x64/bin/scss:23:in `load'
+C:/Program Files/Ruby26-x64/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"$black \": expected \":\", was \"= #000;\"\A         on line 2 of colors.scss\A \A 1: $red: #BB0A30;\A 2: $black = #000;\A 3: $grey1A = #1a1a1a;\A 4: $grey33 = #333333;\A 5: $grey4C = #4c4c4c;\A 6: $grey66 = #666666;\A 7: $grey80 = #808080;"; }
